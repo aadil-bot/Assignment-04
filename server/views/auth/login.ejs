@@ -1,0 +1,59 @@
+<%- include ../partials/header.ejs %>
+<%- include ../partials/main_nav.ejs %>
+
+<main class="container" style="min-height: 80vh;">
+  <div class="row justify-content-center mt-5 mb-5">
+    <div class="col-lg-5 col-md-7 col-sm-10">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+          <h2 class="mb-0"><i class="fas fa-sign-in-alt"></i> Login</h2>
+        </div>
+        <div class="card-body p-4">
+          
+          <% if(messages && messages.length > 0) { %>
+            <div class="alert alert-danger">
+              <%= messages %>
+            </div>
+          <% } %>
+          
+          <form method="POST" action="/login">
+            <div class="form-group mb-3">
+              <label for="username" class="form-label fw-bold">Username</label>
+              <input type="text" class="form-control" name="username" required autofocus>
+            </div>
+            
+            <div class="form-group mb-4">
+              <label for="password" class="form-label fw-bold">Password</label>
+              <input type="password" class="form-control" name="password" required>
+            </div>
+            
+            <div class="d-grid gap-2 mb-3">
+              <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Login</button>
+              <a href="/" class="btn btn-secondary">Cancel</a>
+            </div>
+          </form>
+          
+          <hr>
+          <div class="text-center mb-2">Or login with:</div>
+          <div class="d-grid gap-2">
+            <a href="/auth/google" class="btn btn-danger">
+                <i class="fab fa-google"></i> Login with Google
+            </a>
+            <a href="/auth/github" class="btn btn-dark">
+                <i class="fab fa-github"></i> Login with GitHub
+            </a>
+          </div>
+
+          <hr>
+          <div class="text-center">
+            <p class="mb-0">
+              Don't have an account? <a href="/register" class="fw-bold">Register here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include ../partials/footer.ejs %>

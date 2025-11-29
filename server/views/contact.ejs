@@ -1,0 +1,22 @@
+<%- include ./partials/header.ejs %>
+<%- include ./partials/main_nav.ejs %>
+<!DOCTYPE html>
+  <main>
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form> <!--Different fields like name, email, phone, comments as well as the submit button-->
+        <label>Name: <input type="text" name="name" required></label><br>
+        <label>Email: <input type="email" name="email" required></label><br>
+        <label>Cell No: <input type="tel" name="phone" pattern="[0-9]{10}" required></label><br>
+        <label>Comments:<br><textarea name="comments" required></textarea></label><br>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer id="customfooter">
+    <p>Copyright &copy; 2025 Aadil</p>
+  </footer>
+</body>
+</html>
+<%- include ./partials/footer.ejs %>

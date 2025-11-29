@@ -1,0 +1,73 @@
+<%- include ../partials/header.ejs %>
+<%- include ../partials/main_nav.ejs %>
+
+<main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+            <h1><%= title %></h1>
+            
+            <!-- The Add Button -->
+            <a href="/assignments/add" class="btn btn-primary" role="button">
+                <i class="fas fa-plus-circle"></i> Add New Assignment
+            </a>
+            <br><br>
+
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Table Headers -->
+                <tr class="d-flex">
+                   <th class="col-3">Assignment Name</th>
+                   <th class="col-2">Course</th>
+                   <th class="col-2 text-center">Due Date</th>
+                   <th class="col-3">Details</th>
+                   <th class="col-1 text-center">Done?</th>
+                   <th class="col-1">Edit</th> 
+                   <th class="col-1">Delete</th> 
+                </tr>
+
+                <!-- The Loop -->
+                <% for(let count = 0; count < AssignmentList.length; count++) { %>
+                    <tr class="d-flex">
+                        <td class="col-3"><%= AssignmentList[count].name %></td>
+                        <td class="col-2"><%= AssignmentList[count].course %></td>
+                        
+                        <!-- Date Formatting -->
+                        <td class="col-2 text-center">
+                            <% if(AssignmentList[count].dueDate) { %>
+                                <%= new Date(AssignmentList[count].dueDate).toLocaleDateString() %>
+                            <% } else { %>
+                                N/A
+                            <% } %>
+                        </td>
+
+                        <td class="col-3"><%= AssignmentList[count].description %></td>
+                        
+                        <!-- Completed Check -->
+                        <td class="col-1 text-center">
+                            <% if(AssignmentList[count].isCompleted) { %>
+                                <i class="fas fa-check text-success"></i>
+                            <% } else { %>
+                                <i class="fas fa-times text-danger"></i>
+                            <% } %>
+                        </td>
+
+                        <!-- Edit Button -->
+                        <td class="col-1 text-center">
+                            <a href="/assignments/edit/<%= AssignmentList[count]._id %>" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                        </td>
+                        
+                         <!-- Delete Button -->
+                        <td class="col-1 text-center">
+                            <a href="/assignments/delete/<%= AssignmentList[count]._id %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</main>
+
+<%- include ../partials/footer.ejs %>

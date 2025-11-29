@@ -1,0 +1,18 @@
+<%- include ./partials/header.ejs %>
+<%- include ./partials/main_nav.ejs %>
+    <div class="p-5 mb-4 bg-light rounded-3 jumbotron">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Manage Your Assignments</h1>
+      <p class="col-md-8 fs-4">
+        Welcome to your student dashboard. Keep track of your courses, due dates, and progress all in one place.
+      </p>
+      <a href="/assignments/add" class="btn btn-primary btn-lg mt-3" role="button">
+        <i class="fas fa-plus-circle"></i> Add Assignment
+      </a>
+      
+      <a href="/assignments" class="btn btn-outline-secondary btn-lg mt-3 ms-2" role="button">
+        View List
+      </a>
+    </div>
+</div>
+<%- include ./partials/footer.ejs %>

@@ -1,0 +1,73 @@
+<%- include ../partials/header.ejs %>
+<%- include ../partials/main_nav.ejs %>
+
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+            
+            <form class="form" method="post">
+                
+                <div class="form-group">
+                    <label for="nameTextField">Assignment Name</label>
+                    <input type="text" class="form-control"
+                    id="nameTextField"
+                    placeholder="Enter the assignment title"
+                    name="name" 
+                    value="<%= Assignment.name %>" 
+                    required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="courseTextField">Course/Class</label>
+                    <input type="text" class="form-control"
+                    id="courseTextField"
+                    placeholder="Enter the course name (e.g., COMP229)"
+                    name="course" 
+                    value="<%= Assignment.course %>" 
+                    required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dueDateTextField">Due Date</label>
+                    <input type="date" class="form-control"
+                    id="dueDateTextField"
+                    name="dueDate"
+                    value="<%= Assignment.dueDate ? Assignment.dueDate.toISOString().substring(0, 10) : '' %>"
+                    required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="descriptionTextArea">Assignment Details</label>
+                    <textarea type="text" class="form-control"
+                    id="descriptionTextArea"
+                    placeholder="Provide detailed instructions or notes"
+                    name="description" 
+                    required>
+                    <%= Assignment.description %>
+                    </textarea>
+                </div>
+
+                <div class="form-group form-check mt-3">
+                    <input type="checkbox" class="form-check-input"
+                    id="isCompletedCheckbox"
+                    name="isCompleted"
+                    value="true"
+                    <%= Assignment.isCompleted ? 'checked' : '' %>>
+                    <label class="form-check-label" for="isCompletedCheckbox">Mark as Completed</label>
+                </div>
+
+                <br>
+                
+                <button class="btn btn-primary btn-sm">
+                    <i class="fas fa-edit"></i> Update
+                </button>
+                <a href="/assignments" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ../partials/footer.ejs %>
